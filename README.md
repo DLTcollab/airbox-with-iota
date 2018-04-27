@@ -2,8 +2,8 @@
 https://hackmd.io/s/H1HxM-2hz
 
 # (IOTA TangleID) 空氣盒子教學
-* [本頁連結](https://hackmd.io/s/H1HxM-2hz)
-    ![](https://i.imgur.com/CpVU1zY.png)
+* [本頁連結](https://hackmd.io/s/H1HxM-2hz)  
+     ![](https://i.imgur.com/CpVU1zY.png)
 * [twzjwang/airbox-with-iota](https://github.com/twzjwang/airbox-with-iota)
 * 修改自 [HACK4U#4: Hack4u 87Live 課程教學](https://paper.dropbox.com/doc/HACK4U4-Hack4u-87Live-TRmqFxXLJHXrKBo4kiR6O)
 * 透過分散式帳本 IOTA 代替 MQTT server
@@ -22,11 +22,11 @@ https://hackmd.io/s/H1HxM-2hz
 
 * 本專案由以下單位共同貢獻：
 
-  肉多多工作室 - 阿海(87Live共同原創)  https://www.facebook.com/rododo.farm/
-  中央研究院 - 荊輔翔(87Live共同原創). 陳伶志(SHT31版本-提供)
-  協明工業 - Joe Lai (機構設計)
-  iCShop - iCShopping (組裝影片教學)
-  **NCKU DLT Lab (整合 TangleID)**
+  肉多多工作室 - 阿海(87Live共同原創)  https://www.facebook.com/rododo.farm/  
+  中央研究院 - 荊輔翔(87Live共同原創). 陳伶志(SHT31版本-提供)  
+  協明工業 - Joe Lai (機構設計)  
+  iCShop - iCShopping (組裝影片教學)  
+  **NCKU (整合 TangleID)**
 
 * 本課程的教學討論區
   HACK4U by RoDoDo : https://www.facebook.com/groups/1528657247160471/
@@ -112,7 +112,7 @@ https://hackmd.io/s/H1HxM-2hz
 4. 填完之後按 OK，然後因為改編輯器語言的關係，我們將 Arduino IDE 關掉之後重開
 5. 到 `Tools` -> `Board` -> `Boards Manager` 
 ![](https://www.amebaiot.com/wp-content/uploads/2015/12/get-start-6.png)
-6. 在 `Boards Manager` 裡，它需要約十幾秒鐘整理所有硬體檔案，如果網路狀況不好可能會等上數分鐘。每當有新的硬體設定，我們需要重開 `Boards Manager`，所以我們等一會兒之後，關掉 `Boards Manager`，然後再打開它，將捲軸往下拉找到 `Realtek Ameba Boards`，點右邊的 Install，這時候 Arduino IDE 就根據 Ameba 的設定檔開始下載 Ameba 所需要的檔案
+6. 在 `Boards Manager` 裡，它需要約十幾秒鐘整理所有硬體檔案，如果網路狀況不好可能會等上數分鐘。每當有新的硬體設定，我們需要重開 `Boards Manager`，所以我們等一會兒之後，關掉 `Boards Manager`，然後再打開它，將捲軸往下拉找到 `Realtek Ameba Boards`，點右邊的 Install，這時候 Arduino IDE 就根據 Ameba 的設定檔開始下載 Ameba 所需要的檔案  
 ![](https://www.amebaiot.com/wp-content/uploads/2015/12/get-start-7.png)
 7. 將板子選成 Ameba，選取 `tools` -> `Board` -> `Arduino Ameba`，並選擇 port
 ![](https://www.amebaiot.com/wp-content/uploads/2015/12/get-start-8.png)
@@ -176,7 +176,4 @@ uuid 為 `LASS` + toTrytes(clientID)
     {"ver_format": "3","FAKE_GPS": "1","app": "PM25","ver_app": "live","device_id": "8CE7A927","gps_lon": "120.971042","gps_lat": "24.801909","timestamp": "2018-04-27 20:06:57","s_d0": "35","s_d1": "42","s_t0": "29","s_h0": "59"},
     Press Enter to continue...
     ```
-    
-### g0v零時空汙觀測網 [WIP]
-https://airmap.g0v.asper.tw/v5/#/map
 
