@@ -25,6 +25,42 @@ void setup() {
   wdt_enable(8000);
   os_thread_create(read_sensor, NULL, OS_PRIORITY_REALTIME, 4096);
   os_thread_create(makeRequest, NULL, OS_PRIORITY_HIGH, 8192);
+  if ( status == WL_CONNECTED) {
+  Serial.println("Connected to wifi");
+  Serial.println("Starting connection...");
+
+  // if you get a connection, report back via serial:
+  if (client.connect(server, 80)) {
+    char msg[2048];
+    Serial.println("connected");
+    Serial.println("Make a HTTP request");
+    
+    memset(msg, '\0', sizeof(msg));
+    sprintf(msg, "{\"command\":\"new_claim\",\"uuid\": \"LASSUUIDLIST\",\"signature\":\"\",\"part_a\":\"LASSUUIDLIST\",\"part_b\":\"LASSUUIDLIST\",\"exp_date\":\"\",\"claim_pic\":\"\",\"msg\":\"%s\"}", uuid);        
+    
+    // Make a HTTP request:
+    client.println("POST /tangleid_backend/api/ HTTP/1.1");
+    client.println("Host: 140.116.82.61");
+    client.println("Content-Type: application/json");
+    client.print("Content-Length: ");
+    client.println(strlen(msg));
+    client.println("");
+    client.print(msg);
+    client.println("");
+    
+    Serial.println("POST /tangleid_backend/api/ HTTP/1.1");
+    Serial.println("Host: 140.116.82.61");
+    Serial.println("Content-Type: application/json");
+    Serial.print("Content-Length: ");
+    Serial.println(strlen(msg));
+    Serial.println("");
+    Serial.println(msg);
+    Serial.println("");
+  } else {
+    Serial.println("Connected failed");
+  }
+  Serial.println("\n");
+} 
 }
 
 void loop() {
