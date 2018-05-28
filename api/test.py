@@ -4,6 +4,8 @@ from uuid_list import get_uuid_list
 from specific_sensor_all_data import get_specific_sensor_all_data
 from specific_sensor_latest_data import get_specific_sensor_latest_data
 from specific_sensor_history_data import get_specific_sensor_history_data
+from specific_sensor_date_data import get_specific_sensor_date_data
+from all_sensor_latest_data import get_all_sensor_latest_data
 
 print('\n\n\n*****  Test : split()  *****\n')
 print('Input (type):\tget_claim_info return value (string)')
@@ -13,7 +15,7 @@ print(split(return_value))
 
 print('\n\n\n*****  Test : decode()  *****\n')
 print('Input (type):\tmsg (string)')
-print('Output(type):\t[timestamp (string), sensor_data (string)]\n')
+print('Output(type):\t[sensor_data (string), timestamp (string)]\n')
 msg = '3|1|PM25|live|8CE7A927|0|120.971042|24.801909|60|WwJioKqdQAJSHToAAmeHTLJDVVUeA0ao'
 print(decode(msg)) 
 
@@ -39,3 +41,15 @@ print('Input (type):\tuuid (string)')
 print('Output (type):\tsensor data (json)\n')
 uuid = 'LASSPBUAUAXABBMBOBAB'
 print(get_specific_sensor_history_data(uuid))
+
+print('\n\n\n*****  Test : get_specific_sensor_date_data()  *****\n')
+print('Input (type):\tuuid (string), date y-m-d (string)')
+print('Output (type):\tsensor data (json)\n')
+uuid = 'LASSPBUAUAXABBMBOBAB'
+date = '2018-05-21'
+print(get_specific_sensor_date_data(uuid, date))
+
+print('\n\n\n*****  Test : get_all_sensor_latest_data()  *****\n')
+print('Input (type):\tnone ()')
+print('Output (type):\tsensor data (json)\n')
+print(get_all_sensor_latest_data())
