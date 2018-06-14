@@ -197,22 +197,15 @@ def decode(msg):
             else:
                 temp = temp + code[0]
                 code = code[1:len(code)]
+        data = []
+        timestamp = []
         for j in range(0,10):
-            data_str = '{"ver_format": "'+ver_format+'","FAKE_GPS": "'+FAKE_GPS+'","app": "'+app+'","ver_app": "'+ver_app+'","device_id": "'+device_id+'","gps_lon": "'+gps_lon+'","gps_lat": "'+gps_lat+'","timestamp": "'+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(epoch[j]))+'","s_d0": "'+str(d0[j])+'","s_d1": "'+str(d1[j])+'","s_t0": "'+str(t0[j])+'","s_h0": "'+str(h0[j])+'"},'   
-            print(data_str)
+            data.append('{"ver_format": "'+ver_format+'","FAKE_GPS": "'+FAKE_GPS+'","app": "'+app+'","ver_app": "'+ver_app+'","device_id": "'+device_id+'","gps_lon": "'+gps_lon+'","gps_lat": "'+gps_lat+'","timestamp": "'+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(epoch[j]))+'","s_d0": "'+str(d0[j])+'","s_d1": "'+str(d1[j])+'","s_t0": "'+str(t0[j])+'","s_h0": "'+str(h0[j])+'"}')
+            timestamp.append(epoch[j])
+        return data, timestamp
 
     except (IndexError):
         pass
 
-if __name__ == '__main__':
-    payload = {'command':'get_all_claims', 'uuid':str(sys.argv[1])}
-    response = requests.post("http://node0.puyuma.org/tangleid_backend/api/", json=payload)
-    data = response.json()
-    index = 0
-    for t_hash in data:
-        payload = {'command':'get_claim_info', 'hash_txn':t_hash}
-        response = requests.post("http://node0.puyuma.org/tangleid_backend/api/", json=payload)
-        part_a, part_b, exp_date, claim_pic, msg = response.text.split(',')
-        decode(msg) 
-    input("Press Enter to continue...")
-
+def split(return_value):
+    return return_value.split(',')
