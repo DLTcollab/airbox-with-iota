@@ -22,7 +22,7 @@ int status = WL_IDLE_STATUS;
 WiFiUDP Udp;
 WiFiClient client;
 const char ntpServer[] = "118.163.81.61";
-IPAddress server(140, 116, 82, 61);
+IPAddress server(140, 131, 178, 248);
 
 const int NTP_PACKET_SIZE = 48; // NTP time stamp is in the first 48 bytes of the message
 const byte nptSendPacket[ NTP_PACKET_SIZE] = {

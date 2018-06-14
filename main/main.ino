@@ -30,7 +30,7 @@ void setup() {
   Serial.println("Starting connection...");
 
   // if you get a connection, report back via serial:
-  if (client.connect(server, 80)) {
+  if (client.connect(server, 8000)) {
     char msg[2048];
     Serial.println("connected");
     Serial.println("Make a HTTP request");
@@ -39,8 +39,8 @@ void setup() {
     sprintf(msg, "{\"command\":\"new_claim\",\"uuid\": \"LASSUUIDLIST\",\"signature\":\"\",\"part_a\":\"LASSUUIDLIST\",\"part_b\":\"LASSUUIDLIST\",\"exp_date\":\"\",\"claim_pic\":\"\",\"msg\":\"%s\"}", uuid);        
     
     // Make a HTTP request:
-    client.println("POST /tangleid_backend/api/ HTTP/1.1");
-    client.println("Host: 140.116.82.61");
+    client.println("POST 8000 HTTP/1.1");
+    client.println("Host: 140.131.178.248");
     client.println("Content-Type: application/json");
     client.print("Content-Length: ");
     client.println(strlen(msg));
@@ -48,8 +48,8 @@ void setup() {
     client.print(msg);
     client.println("");
     
-    Serial.println("POST /tangleid_backend/api/ HTTP/1.1");
-    Serial.println("Host: 140.116.82.61");
+    Serial.println("POST 8000 HTTP/1.1");
+    Serial.println("Host: 140.131.178.248");
     Serial.println("Content-Type: application/json");
     Serial.print("Content-Length: ");
     Serial.println(strlen(msg));
@@ -132,7 +132,7 @@ void makeRequest(const void *argument) {
         Serial.println("Starting connection...");
   
         // if you get a connection, report back via serial:
-        if (client.connect(server, 80)) {
+        if (client.connect(server, 8000)) {
           Serial.println("connected");
           Serial.println("Make a HTTP request");
           
@@ -140,8 +140,8 @@ void makeRequest(const void *argument) {
           sprintf(claim_msg, "{\"command\":\"new_claim\",\"uuid\": \"%s\",\"signature\":\"\",\"part_a\":\"%s\",\"part_b\":\"%s\",\"exp_date\":\"\",\"claim_pic\":\"\",\"msg\":\"3|1|PM25|%s|%s|%d|%s|%s|%d|%s\"}", uuid, uuid, uuid, "live", clientId, tangleid_version, gps_lon, gps_lat, lass_period, msg);        
           
           // Make a HTTP request:
-          client.println("POST /tangleid_backend/api/ HTTP/1.1");
-          client.println("Host: 140.116.82.61");
+          client.println("POST 8000 HTTP/1.1");
+          client.println("Host: 140.131.178.248");
           client.println("Content-Type: application/json");
           client.print("Content-Length: ");
           client.println(strlen(claim_msg));
@@ -149,8 +149,8 @@ void makeRequest(const void *argument) {
           client.print(claim_msg);
           client.println("");
           
-          Serial.println("POST /tangleid_backend/api/ HTTP/1.1");
-          Serial.println("Host: 140.116.82.61");
+          Serial.println("POST 8000 HTTP/1.1");
+          Serial.println("Host: 140.131.178.248");
           Serial.println("Content-Type: application/json");
           Serial.print("Content-Length: ");
           Serial.println(strlen(claim_msg));
