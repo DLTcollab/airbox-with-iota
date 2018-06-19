@@ -8,9 +8,13 @@ def get_uuid_list():
     claim_list =  response.json()
     uuid_list = []
     for tx in claim_list:
-        payload = {'command':'get_claim_info', 'hash_txn':tx}
-        response = requests.post(HOST_URL, json=payload)
-        uuid = split(response.text)[4]
-        if uuid not in uuid_list:
-            uuid_list.append(uuid)
+        try:
+            payload = {'command':'get_claim_info', 'hash_txn':tx}
+            response = requests.post(HOST_URL, json=payload)
+            uuid = split(response.text)[5]
+            uuid = uuid[11:len(uuid)-1]
+            if uuid not in uuid_list:
+                uuid_list.append(uuid)
+        except (IndexError):
+            pass
     return uuid_list

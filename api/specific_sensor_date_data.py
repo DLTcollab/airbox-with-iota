@@ -15,12 +15,16 @@ def get_specific_sensor_date_data(uuid, date):
     epoch = []
     device_id = ''
     for tx in claim_list:
-        payload = {'command':'get_claim_info', 'hash_txn':tx}
-        response = requests.post(HOST_URL, json=payload)
-        msg = split(response.text)[4]
-        sensor_data.extend(decode(msg)[0])
-        epoch.extend(decode(msg)[1])
-        device_id = split(response.text)[4].split('|')[4]
+        try:
+            payload = {'command':'get_claim_info', 'hash_txn':tx}
+            response = requests.post(HOST_URL, json=payload)
+            msg = split(response.text)[5]
+            msg = msg[11:len(msg)-1]
+            sensor_data.extend(decode(msg)[0])
+            epoch.extend(decode(msg)[1])
+            device_id = msg.split('|')[4]
+        except (IndexError):
+            pass
     epoch_a = time.mktime(datetime.datetime.strptime(date, "%Y-%m-%d").timetuple())
     epoch_b = epoch_a + 86400
     history_data = []

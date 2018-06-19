@@ -46,7 +46,7 @@ print('\n\n\n*****  Test : get_specific_sensor_date_data()  *****\n')
 print('Input (type):\tuuid (string), date y-m-d (string)')
 print('Output (type):\tsensor data (json)\n')
 uuid = 'LASSPBUAUAXABBMBOBAB'
-date = '2018-05-21'
+date = '2018-06-18'
 print(get_specific_sensor_date_data(uuid, date))
 
 print('\n\n\n*****  Test : get_all_sensor_latest_data()  *****\n')

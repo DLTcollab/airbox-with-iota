@@ -1,1 +1,1 @@
-HOST_URL = 'http://node0.puyuma.org/tangleid_backend/api/'
+HOST_URL = 'http://node3.puyuma.org:8000'
