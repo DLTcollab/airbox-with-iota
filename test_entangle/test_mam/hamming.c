@@ -12,13 +12,10 @@
 #include "trit.h"
 
 short test(PCurl *const curl, unsigned short const security) {
-  printf("test 1 a\n");
   unsigned short i, j, k;
   signed short sum;
-  printf("test 1 b\n");
   for (i = 0; i < sizeof(ptrit_s) * 8; i++) {
     sum = 0;
-  printf("test 1 c\n");
 
     for (j = 0; j < security; j++) {
       for (k = j * HASH_LENGTH / 3; k < (j + 1) * HASH_LENGTH / 3; k++) {
@@ -28,20 +25,17 @@ short test(PCurl *const curl, unsigned short const security) {
           sum++;
         }
       }
-  printf("test 1 d\n");
 
       if (sum == 0 && j < security - 1) {
         sum = 1;
         break;
       }
     }
-  printf("test 1 e\n");
 
     if (sum == 0) {
       return i;
     }
   }
-  printf("test 1 f\n");
 
   return -1;
 }
