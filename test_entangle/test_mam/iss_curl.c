@@ -3,6 +3,8 @@
  * https://github.com/iotaledger/entangled
  *
  * Refer to the LICENSE file for licensing information
+ * 
+ * Modifications copyright (c) Zan-Jun Wang
  */
 
 #include "trit.h"

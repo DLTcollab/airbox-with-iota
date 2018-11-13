@@ -1,5 +1,7 @@
 /*
  * (c) 2016 Paul Handy, based on code from come-from-beyond
+ * 
+ * Modifications copyright (c) Zan-Jun Wang
  */
 
 #include <stdio.h>
