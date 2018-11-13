@@ -3,6 +3,8 @@
  * https://github.com/iotaledger/entangled
  *
  * Refer to the LICENSE file for licensing information
+ * 
+ * Modifications copyright (c) Zan-Jun Wang
  */
 
 #ifndef __COMMON_CURL_P_PEARL_DIVER_H_
