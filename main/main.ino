@@ -77,8 +77,7 @@ void setup() {
       sprintf(msg, "{\"command\":\"new_claim\",\"uuid\": \"LASSUUIDLIST\",\"signature\":\"\",\"part_a\":\"LASSUUIDLIST\",\"part_b\":\"LASSUUIDLIST\",\"exp_date\":\"\",\"claim_pic\":\"\",\"msg\":\"%s,%s\"}", uuid, pubKeyString);        
       
       // Make a HTTP request:
-      client.println("POST 443 HTTP/1.1");
-      client.println("Host: 140.116.245.162");
+      client.println("POST / HTTP/1.1");
       client.println("Content-Type: application/json");
       client.print("Content-Length: ");
       client.println(strlen(msg));
@@ -86,8 +85,7 @@ void setup() {
       client.print(msg);
       client.println("");
       
-      Serial.println("POST 443 HTTP/1.1");
-      Serial.println("Host: 140.116.245.162");
+      Serial.println("POST / HTTP/1.1");
       Serial.println("Content-Type: application/json");
       Serial.print("Content-Length: ");
       Serial.println(strlen(msg));
@@ -153,13 +151,13 @@ void read_sensor(const void *argument){
 void makeRequest(const void *argument) { 
   while(1){
     os_thread_yield();
-    delay( lass_period * 1000);
+    delay(lass_period * 1000);
     uint8_t signature[132];
     char encodedDate[512], msg[512], claim_msg[2048], signatureString[264];
     os_semaphore_wait(sema, 0xFFFFFFFF);
     unsigned long epoch = epochSystem + millis() / 1000;
     
-    char payload[300];
+    char payload[128];
     sprintf(payload, "epoch = %d | s_d0 = %d | s_d1 = %d | s_t0 = %d | s_h0 = %d",
       epoch, pm25,pm10,(int)bme280_t,(int)bme280_h);
     Serial.println(payload);
@@ -179,6 +177,7 @@ void makeRequest(const void *argument) {
           memset(msg, '\0', sizeof(msg));
           sprintf(msg, "3|1|PM25|%s|%s|%d|%s|%s|%d|%s", "live", clientId, tangleid_version, gps_lon, gps_lat, lass_period, encodedDate);        
           P521::sign(signature, priKey, msg, sizeof(msg));
+          memset(signatureString, '\0', sizeof(signatureString));
           for (int i = 0; i < sizeof(signature); i++) {
             signatureString[2 * i] = hex[signature[i] >> 4];
             signatureString[2 * i + 1] = hex[signature[i] % 16];
@@ -196,8 +195,7 @@ void makeRequest(const void *argument) {
           sprintf(claim_msg, "{\"command\":\"new_claim\",\"uuid\": \"%s\",\"signature\":\"\",\"part_a\":\"%s\",\"part_b\":\"%s\",\"exp_date\":\"\",\"claim_pic\":\"\",\"msg\":\"%s|%s\"}", uuid, uuid, uuid, msg, signatureString);        
           
           // Make a HTTP request:
-          client.println("POST 443 HTTP/1.1");
-          client.println("Host: 140.116.245.162");
+          client.println("POST / HTTP/1.1");
           client.println("Content-Type: application/json");
           client.print("Content-Length: ");
           client.println(strlen(claim_msg));
@@ -205,8 +203,7 @@ void makeRequest(const void *argument) {
           client.print(claim_msg);
           client.println("");
           
-          Serial.println("POST 443 HTTP/1.1");
-          Serial.println("Host: 140.116.245.162");
+          Serial.println("POST / HTTP/1.1");
           Serial.println("Content-Type: application/json");
           Serial.print("Content-Length: ");
           Serial.println(strlen(claim_msg));
