@@ -22,8 +22,8 @@ int status = WL_IDLE_STATUS;
 WiFiUDP Udp;
 WiFiClient client;
 const char ntpServer[] = "118.163.81.61";
-IPAddress server(140, 116, 245, 162);
-const int port = 443;
+IPAddress server(iota_node[0], iota_node[1], iota_node[2], iota_node[3]);
+const int port = 8001;
 
 const int NTP_PACKET_SIZE = 48; // NTP time stamp is in the first 48 bytes of the message
 const byte nptSendPacket[ NTP_PACKET_SIZE] = {
