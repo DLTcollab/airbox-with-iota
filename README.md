@@ -72,11 +72,11 @@ SCL|SCL|SCL
 </p>
 
 * Records
-Search `Tag` (`uuid` + `'C'`) on [TheTangle](https://thetangle.org/)  
+Search `Tag` (`uuid` + `'C'`) on [TheTangle(DEVNET)](https://devnet.thetangle.org)  
 e.g.  
 uuid : LASSPBUAUAXABBMBOBAB  
 Tag  : LASSPBUAUAXABBMBOBABC  
-https://thetangle.org/tag/LASSPBUAUAXABBMBOBABC
+https://devnet.thetangle.org/tag/LASSPBUAUAXABBMBOBABC
 
 ## APIs
 * Python 3.6.5
